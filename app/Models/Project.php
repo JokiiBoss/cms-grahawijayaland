@@ -13,8 +13,8 @@ class Project extends Model
         'title',
         'description',
         'image',
-        'price',
         'logo',
+        'price',
         'qr_code',
         'location'
     ];

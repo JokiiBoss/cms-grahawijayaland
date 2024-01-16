@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->decimal('price', 10, 2);
+            $table->bigInteger('price');
             $table->string('logo')->nullable();
             $table->string('qr_code')->nullable();
             $table->string('location');
