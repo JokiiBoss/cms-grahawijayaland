@@ -15,4 +15,9 @@ class Setting extends Model
         'description',
         'no_whatsapp'
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

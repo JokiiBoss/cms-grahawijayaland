@@ -16,9 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.projects.index')" :active="request()->routeIs('admin.projects.index', 'admin.projects.create', 'admin.projects.show', 'admin.projects.update', 'admin.projects.edit')">
                         {{ __('Projects') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index', 'admin.settings.create', 'admin.settings.show', 'admin.settings.update', 'admin.settings.edit')">
+                        {{ __('Settings') }}
                     </x-nav-link>
                 </div>
             </div>

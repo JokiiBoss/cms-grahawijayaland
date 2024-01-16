@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\ProjectController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +35,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         'projects' => 'id',
     ])->names('admin.projects');
 })->name('projects');
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::resource('settings', SettingController::class)->parameters([
+        'settings' => 'id',
+    ])->names('admin.settings');
+})->name('settings');
 
 require __DIR__ . '/auth.php';
