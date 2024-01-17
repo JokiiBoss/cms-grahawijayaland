@@ -82,6 +82,12 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.projects.index')" :active="request()->routeIs('admin.projects.index', 'admin.projects.create', 'admin.projects.show', 'admin.projects.update', 'admin.projects.edit')">
+                {{ __('Projects') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index', 'admin.settings.create', 'admin.settings.show', 'admin.settings.update', 'admin.settings.edit')">
+                {{ __('Setting') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

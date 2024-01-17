@@ -7,7 +7,7 @@
     @vite([
       'resources/css/app.css',
       'resources/js/app.js', 
-      ]);
+      ])
     <title>Graha Wijaya Land</title>
   </head>
 
@@ -31,7 +31,7 @@
 
     <section>
       <div class="relative h-[40vh] md:h-screen">
-        <img src="{{ asset('storage/img/bg-hero.jpg')}}" alt="bg-hero"
+        <img src="{{ asset('storage/'. $settings->image)}}" alt="bg-hero"
           class="absolute inset-0 object-cover w-full h-full blur-[1px] md:blur-sm">
         <div class="absolute w-3/4 transform -translate-x-1/2 -translate-y-1/2 md:w-1/2 top-1/2 left-1/2">
           <img src="{{ asset('storage/img/comingsoon.png')}}" alt="comingsoon" class="w-full">
@@ -55,10 +55,7 @@
         <h1 class="text-sm font-bold text-center text-white md:text-6xl font-montserrat">GRAHA WIJAYA LAND</h1>
       </div>
       <div class="p-4 mx-auto md:w-1/2 md:p-8">
-        <p class="text-sm font-bold text-center md:text-xl text-main font-montserrat">DEVELOPER PERUMAHAN MODERN
-          BERKUALITAS YANG
-          BERDIRI SEJAK 2020 DENGAN 3 PROYEK BERJALAN. KAMI SELALU BERKOMITMEN UNTUK MENJAGA KUALITAS DAN LEGALITAS PRODUK
-          KAMI.</p>
+        <p class="text-sm font-normal text-center md:text-xl text-main font-montserrat">{{ $settings -> description }}</p>
         <img src="{{ asset('storage/img/dpd-rei.png')}}" alt="real-estate-indonesia" class="h-24 mx-auto mt-6 md:mt-12 md:h-40">
         <h3 class="mt-2 text-sm font-bold text-center md:mt-4 md:text-xl text-main font-montserrat">NPA REI 10.00304</h3>
       </div>
@@ -173,7 +170,7 @@
             class="absolute right-0 flex flex-col items-center justify-end w-2/3 gap-2 text-center md:gap-4 md:right-4">
             <h2 class="text-[10px] md:text-xl text-white font-montserrat pr-10">Hubungi segera untuk informasi selengkapnya!
             </h2>
-            <p class="text-sm font-bold text-white md:text-4xl font-montserrat">0813 2005 7400</p>
+            <p class="text-sm font-bold text-white md:text-4xl font-montserrat">{{ $settings -> no_whatsapp}}</p>
           </div>
           <img src="{{ asset('storage/img/wa-icon.png')}}" alt="whatsapp" class="absolute h-28 -left-8 md:-top-20 md:-left-56 md:h-96">
         </div>

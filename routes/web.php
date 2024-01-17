@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -41,5 +44,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         'settings' => 'id',
     ])->names('admin.settings');
 })->name('settings');
+
+
 
 require __DIR__ . '/auth.php';
