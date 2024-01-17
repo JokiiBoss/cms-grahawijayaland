@@ -121,14 +121,15 @@
       <div class="w-1/2 p-2 md:p-6 mx-auto rounded-b-xl bg-gradient-to-r from-main to-[#001629]">
         <h1 class="text-xl font-bold text-center text-white md:text-6xl font-montserrat">EVENT & PROMO</h1>
       </div>
-      <div class="flex justify-center gap-8 p-8 md:gap-12 md:p-12">
-        <img src="{{ asset('storage/img/expo.jpg')}}" alt="expo" class="h-60 md:h-96">
-        <div class="w-[30%] flex flex-col items-center my-auto">
-          <h1 class="text-sm font-bold md:text-4xl font-montserrat">PESTA PROPERTY EXPO 2024</h1>
-          <p class="mt-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, harum perferendis aliquam
-            mollitia quis amet explicabo esse? Quae, nobis! Nostrum?</p>
+      @foreach ($events as $event)
+        <div class="flex justify-center gap-8 p-8 md:gap-12 md:p-12">
+          <img src="{{ asset('storage/'.$event->image)}}" alt="event-poster" class="h-60 md:h-96">
+          <div class="w-[30%] flex flex-col items-center my-auto">
+            <h1 class="text-sm font-bold md:text-4xl font-montserrat">{{ $event -> title }}</h1>
+            <p class="mt-4">{{ $event-> content }}</p>
+          </div>
         </div>
-      </div>
+        @endforeach
     </section>
 
     <section class="pb-12 mt-12 md:pb-20">
