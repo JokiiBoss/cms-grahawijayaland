@@ -14,9 +14,10 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::with('project')->first(); // Ambil hanya satu setting (mungkin Anda ingin membatasi satu setting saja)
+        $project = Project::all();
+        $settings = Setting::firstOrCreate();
 
-        return view('admin.settings.index', compact('settings'));
+        return view('admin.settings.index', compact('settings', 'project'));
     }
 
 
@@ -28,26 +29,31 @@ class SettingController extends Controller
             'description' => 'required',
         ]);
 
-        $setting = Setting::findOrFail($id);
-
         try {
+            $setting = Setting::findOrFail($id);
 
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('jumbotron_images', 'public');
-                $setting->update(['image' => $imagePath]);
+            $setting->no_whatsapp = $request->input('no_whatsapp');
+
+            // Check if the 'description' field exists in the request before updating
+            if ($request->has('description')) {
+                $setting->description = $request->input('description');
             }
 
-            $setting->update([
-                'no_whatsapp' => $request->input('no_whatsapp'),
-                'image' => $imagePath,
-                'description' => $request->input('description'),
-            ]);
+            // Check if an image file is uploaded before updating
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('jumbotron_images', 'public');
+                $setting->image = $imagePath;
+            }
+
+            $setting->save();
 
             return redirect()->route('admin.settings.index')->with('success', 'Settings updated successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to update settings. Please try again.');
         }
     }
+
+
 
     /**
      * Show the form for creating a new resource.

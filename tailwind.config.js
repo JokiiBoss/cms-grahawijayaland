@@ -16,7 +16,7 @@ export default {
                 main: "#1B4367",
             },
             fontFamily: {
-                // sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
                 montserrat: ["Montserrat", "sans-serif"],
                 poppins: ["Poppins", "sans-serif"],
             },

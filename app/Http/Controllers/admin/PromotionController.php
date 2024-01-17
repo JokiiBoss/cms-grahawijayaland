@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PromotionController extends Controller
 {
@@ -60,9 +61,9 @@ class PromotionController extends Controller
      */
     public function edit(string $id)
     {
-        $promotion = Promotion::findOrFail($id);
+        $promotions = Promotion::findOrFail($id);
 
-        return view('admin.promotions.edit', compact('promotion'));
+        return view('admin.promotions.edit', compact('promotions'));
     }
 
     /**
@@ -70,7 +71,34 @@ class PromotionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $promotions = Promotion::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+
+            $imagePath = $request->file('image')->store('promotion_images', 'public');
+
+            Storage::delete('public/promotion_images/' . basename($promotions->image));
+
+            $promotions->update([
+                'image'     => $imagePath,
+                'title'     => $request->input('title'),
+                'content'   => $request->input('content')
+            ]);
+        } else {
+
+            $promotions->update([
+                'title'     => $request->input('title'),
+                'content'   => $request->input('content')
+            ]);
+        }
+
+        return redirect()->route('admin.promotions.index')->with(['success' => 'Event and promotion updated successfully!']);
     }
 
     /**

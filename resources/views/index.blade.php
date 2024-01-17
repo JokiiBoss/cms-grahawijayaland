@@ -9,7 +9,7 @@
     <meta name="keywords" content="graha,grahawijaya,grahawijayaland,wijaland,perumahan">
     <meta name="author" content="Graha Wijaya Land">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Graha Wijaya Land</title>
+    <title>Pengembang Properti - Graha Wijaya Land</title>
 </head>
 
 <body>
@@ -204,7 +204,7 @@
                     <h2 class="text-[10px] md:text-xl text-white font-montserrat">Hubungi segera untuk informasi
                         selengkapnya!
                     </h2>
-                    <p class="text-sm font-bold text-white md:text-4xl font-montserrat">0813 2005 7400</p>
+                    <p class="text-sm font-bold text-white md:text-4xl font-montserrat">{{ $settings->no_whatsapp }}</p>
                 </div>
                 <img src="{{ asset('storage/img/wa-icon.png') }}" alt="whatsapp"
                     class="absolute h-28 -left-8 md:-top-10 md:-left-36 md:h-80">

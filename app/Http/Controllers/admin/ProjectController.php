@@ -14,7 +14,6 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        // Mengubah format harga menjadi mata uang Rupiah
         foreach ($projects as $project) {
             $project->price = 'Rp ' . number_format($project->price, 2, ',', '.');
         }
@@ -81,23 +80,46 @@ class ProjectController extends Controller
         return view('admin.projects.edit', compact('project'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'price' => 'required',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'qr_code' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'location' => 'required',
-        ]);
-
-        $project = Project::findOrFail($id);
-
         try {
-            // Update existing project data
+            $request->validate([
+                'title' => 'required',
+                'description' => 'required',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'price' => 'required',
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'qr_code' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'location' => 'required',
+            ]);
+
+            $project = Project::findOrFail($id);
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('image_project', 'public');
+                Storage::delete('public/' . $project->image);
+                $project->image = $imagePath;
+            }
+
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('logo_project', 'public');
+                if ($project->logo) {
+                    Storage::delete('public/' . $project->logo);
+                }
+
+                $project->logo = $logoPath;
+            }
+
+            if ($request->hasFile('qr_code')) {
+                $qrCodePath = $request->file('qr_code')->store('uploads', 'public');
+
+                if ($project->qr_code) {
+                    Storage::delete('public/' . $project->qr_code);
+                }
+
+                $project->qr_code = $qrCodePath;
+            }
+
             $project->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
@@ -105,28 +127,16 @@ class ProjectController extends Controller
                 'location' => $request->input('location'),
             ]);
 
-            // Update image, logo, and qr_code if provided
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('image_project', 'public');
-                $project->update(['image' => $imagePath]);
-            }
-
-            if ($request->hasFile('logo')) {
-                $logoPath = $request->file('logo')->store('logo_project', 'public');
-                $project->update(['logo' => $logoPath]);
-            }
-
-            if ($request->hasFile('qr_code')) {
-                $qrCodePath = $request->file('qr_code')->store('uploads', 'public');
-                $project->update(['qr_code' => $qrCodePath]);
-            }
-
             return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput()->with('error', 'Validation failed. Please check your input and try again.');
         } catch (\Exception $e) {
-            dd($e->getMessage()); // Debugging statement to see the exception message
-            return redirect()->back()->with('error', 'Failed to update project. Please try again.');
+            $errorMessage = $e->getMessage();
+            return redirect()->back()->with('error', "Failed to update project. Error: $errorMessage. Please try again.");
         }
     }
+
+
 
 
     public function destroy($id)
