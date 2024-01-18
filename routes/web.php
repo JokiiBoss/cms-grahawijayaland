@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/villa-kalasan', [HomeController::class, 'villaKalasan'])->name('villa_kalasan');
+Route::get('/projects', [HomeController::class, 'allProjects'])->name('projects');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
