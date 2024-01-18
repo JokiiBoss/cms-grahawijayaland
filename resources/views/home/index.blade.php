@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Developer perumahan modern berkualitas yang berdiri sejak 2020 dengan 3 proyek berjalan. Kami selalu berkomitmen untuk menjaga kualitas dan legalitas produk kami.">
+    <meta name="description"
+        content="Developer perumahan modern berkualitas yang berdiri sejak 2020 dengan 3 proyek berjalan. Kami selalu berkomitmen untuk menjaga kualitas dan legalitas produk kami.">
     <meta name="keywords" content="graha,grahawijaya,grahawijayaland,wijaland,perumahan">
     <meta name="author" content="Graha Wijaya Land">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -99,8 +100,7 @@
                 <img src="{{ asset('storage/img/barcode-natura.jpg') }}" alt="barcode" class="h-40 mx-auto mt-12">
             </div>
             <div class="px-8 w-96">
-                <img src="{{ asset('storage/img/bukit-argomulyo.png') }}" alt="proyek-kami"
-                    class="mx-auto h-[12rem]">
+                <img src="{{ asset('storage/img/bukit-argomulyo.png') }}" alt="proyek-kami" class="mx-auto h-[12rem]">
                 <p class="text-lg text-center text-white font-montserrat">Kawasan seluas 1,9 Ha dengan total 128 unit
                     di
                     Jl.
@@ -134,6 +134,7 @@
         <div class="flex flex-col items-center md:flex-row md:justify-between">
             <div
                 class="bg-gradient-to-r from-main to-[#001629] rounded-r-3xl flex flex-wrap -ml-24 md:ml-0 flex-col w-3/4 mb-8 md:w-2/5 p-6 md:p-8">
+                <h1 class="text-xl text-center text-white md:text-5xl font-montserrat">MEDIA SOSIAL</h1>
                 <div class="flex items-center gap-2 mt-6 md:gap-4 md:mt-12">
                     <img src="{{ asset('storage/img/fb-icon.png') }}" alt="facebook" class="h-6 md:h-10">
                     <p class="text-[10px] md:text-xl text-white font-poppins">Graha Wijaya Land</p>
@@ -170,7 +171,8 @@
                     <h2 class="text-[10px] md:text-xl text-white font-montserrat">Hubungi segera untuk informasi
                         selengkapnya!
                     </h2>
-                    <p class="text-sm font-bold text-white md:text-4xl font-montserrat">{{ $settings->no_whatsapp }}</p>
+                    <p class="text-sm font-bold text-white md:text-4xl font-montserrat">{{ $settings->no_whatsapp }}
+                    </p>
                 </div>
                 <img src="{{ asset('storage/img/wa-icon.png') }}" alt="whatsapp"
                     class="absolute h-28 -left-8 md:-top-10 md:-left-36 md:h-80">

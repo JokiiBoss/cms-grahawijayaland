@@ -61,9 +61,9 @@ class PromotionController extends Controller
      */
     public function edit(string $id)
     {
-        $promotions = Promotion::findOrFail($id);
+        $promotion = Promotion::findOrFail($id);
 
-        return view('admin.promotions.edit', compact('promotions'));
+        return view('admin.promotions.edit', compact('promotion'));
     }
 
     /**
@@ -74,7 +74,7 @@ class PromotionController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $promotions = Promotion::findOrFail($id);
