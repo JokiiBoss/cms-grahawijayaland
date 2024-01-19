@@ -10,34 +10,18 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <section class="bg-white">
                     <div class="py-8 px-12 mx-auto max-w-full lg:py-16">
-                            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                                <div class="sm:col-span-2">
-                                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Project Name</label>
-                                    <h1 class="font-bold text-4xl">{{ $project->title }}</h1>
-                                </div>
-                                <div class="sm:col-span-2">
-                                    <img class="rounded-lg" src="{{ asset('storage/'. $project->image )}}" alt="Banner Project" srcset="">
-                                </div>
-                                <div class="sm:col-span-2">
-                                    <p>
-                                        {{ $project->description }}
-                                    </p>
-                                </div>
-                                <div class="w-full">
-                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
-                                    <input type="text" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"  value="Rp. {{ $project->price }}" required="">
-                                </div>
-                                <div>
-                                    <label for="location" class="block mb-2 text-sm font-medium text-gray-900">Location</label>
-                                    <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" value="{{ $project->location }}" required="">
-                                </div> 
-                                <div class="w-full">
-                                    <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">Logo</label>
-                                    <img class=" mx-auto" src="{{ asset('storage/' . $project->logo )}}" width="300" alt="Logo Project">
+                        <div class="w-3/4 md:w-1/2 p-2 md:p-6 mx-auto rounded-b-xl bg-gradient-to-r from-main to-[#001629]">
+                            <h1 class="text-lg font-bold text-center text-white md:text-6xl font-montserrat">EVENT & PROMO</h1>
+                        </div>
+                                    <div class="flex justify-center gap-8 p-8 md:gap-12 md:p-12">
+                                <img src="{{ asset('storage/'.$promotion->image) }}" alt="event-poster" class="h-60 md:h-96">
+                                <div class="w-[30%] flex flex-col items-center my-auto">
+                                    <h1 class="text-sm font-bold md:text-4xl font-montserrat">{{ $promotion-> title }}</h1>
+                                    
                                 </div>
                             </div>
-                            <a href="{{ route('admin.projects.edit', $project->id) }}" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Edit project
+                            <a href="{{ route('admin.promotions.edit', $promotion->id) }}" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                Edit Event and Promo
                             </a>
                         </form>
                     </div>
