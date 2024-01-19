@@ -84,34 +84,18 @@
             <h1 class="text-lg font-bold text-center md:text-6xl text-main font-montserrat">PROYEK KAMI</h1>
         </div>
         <div class="flex flex-col items-center justify-around gap-12 px-8 py-12 md:flex-row">
-            <div class="px-8 w-96">
-                <img src="{{ asset('storage/img/natura-kalasan.png') }}" alt="proyek-kami" class="h-[12rem] mx-auto">
-                <p class="text-lg text-center text-white font-montserrat">Kawasan seluas 1,4 Ha dengan total 97 unit di
-                    Jl.
-                    Wates KM 10</p>
-                <img src="{{ asset('storage/img/barcode-argomulyo.png') }}" alt="barcode" class="h-40 mx-auto mt-12">
-            </div>
-            <div class="px-8 w-96">
-                <img src="{{ asset('storage/img/natura-kalasan.png') }}" alt="proyek-kami" class="h-[12rem] mx-auto">
-                <p class="text-lg text-center text-white font-montserrat">Kawasan seluas 3000m dengan total 19 unit di
-                    Jl. Solo
-                    KM
-                    13</p>
-                <img src="{{ asset('storage/img/barcode-natura.jpg') }}" alt="barcode" class="h-40 mx-auto mt-12">
-            </div>
-            <div class="px-8 w-96">
-                <img src="{{ asset('storage/img/bukit-argomulyo.png') }}" alt="proyek-kami" class="mx-auto h-[12rem]">
-                <p class="text-lg text-center text-white font-montserrat">Kawasan seluas 1,9 Ha dengan total 128 unit
-                    di
-                    Jl.
-                    Wates KM 9,5</p>
-                <img src="{{ asset('storage/img/barcode-bukit.png') }}" alt="barcode" class="h-40 mx-auto mt-10">
-            </div>
-            <div class="px-8 w-96">
-                <img src="{{ asset('storage/img/villa-karta.png') }}" alt="proyek-kami"
-                    class="flex items-start h-40 mx-auto">
-                <p class="text-2xl text-center text-white font-montserrat">COMING SOON</p>
-            </div>
+            @foreach ($projects as $project)
+                <div class="px-8 w-96">
+                    @if ($project->status_project == 0)
+                        <img src="{{ asset('storage/'.$project->logo) }}" alt="proyek-kami" class="flex items-start h-40 mx-auto">
+                        <p class="text-2xl text-center text-white font-montserrat">COMING SOON</p>
+                    @else
+                        <img src="{{ asset('storage/'.$project->logo) }}" alt="proyek-kami" class="h-[12rem] mx-auto">
+                        <p class="text-lg text-center text-white font-montserrat">{{ $project->description }}</p>
+                        <img src="{{ asset('storage/'.$project->qr_code) }}" alt="barcode" class="h-40 mx-auto mt-12">
+                    @endif
+                </div>
+            @endforeach
         </div>
     </section>
 

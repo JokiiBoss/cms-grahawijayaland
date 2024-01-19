@@ -25,7 +25,7 @@
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Project Name</label>
-                                    <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="The project name" value="{{ old('title') }}" required="">
+                                    <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="The project name" value="{{ old('title') }}">
                                     @error('title')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
@@ -39,39 +39,46 @@
                                 </div>
                                 <div class="w-full">
                                     <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Image</label>
-                                    <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" required="">
+                                    <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full">
                                     @error('image')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="w-full">
                                     <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">Logo</label>
-                                    <input type="file" name="logo" id="logo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" placeholder="Product brand" required="">
+                                    <input type="file" name="logo" id="logo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" placeholder="Product brand">
                                     @error('logo')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="w-full">
                                     <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">QR Project</label>
-                                    <input type="file" name="qr_code" id="qr_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" placeholder="Product brand" required="">
+                                    <input type="file" name="qr_code" id="qr_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" placeholder="Product brand">
                                     @error('qr_code')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="w-full">
                                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
-                                    <input type="text" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Rp. 700.000.000"  value="{{ old('price') }}" required="">
+                                    <input type="text" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Rp. 700.000.000"  value="{{ old('price') }}">
                                     @error('price')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label for="location" class="block mb-2 text-sm font-medium text-gray-900">Location</label>
-                                    <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="12" value="{{ old('location') }}" required="">
+                                    <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="12" value="{{ old('location') }}">
                                     @error('location')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
-                                </div> 
+                                </div>
+                                <div class="w-full">
+                                    <label for="status_project" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="status_project" id="status_project" class="mr-2" checked value="1">
+                                        <span>Project active?</span>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                 Add project

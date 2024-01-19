@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Promotion;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -10,10 +11,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $settings = Setting::with('project')->first();
+        $settings = Setting::first();
         $events = Promotion::all();
+        $projects = Project::all();
 
-        return view('home.index', compact('settings', 'events'));
+        return view('home.index', compact('settings', 'events', 'projects'));
     }
 
     public function villaKalasan()

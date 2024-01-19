@@ -38,6 +38,7 @@
                                             <th scope="col" class="px-4 py-3">Title</th>
                                             <th scope="col" class="px-4 py-3">Location</th>
                                             <th scope="col" class="px-4 py-3">Price</th>
+                                            <th scope="col" class="px-4 py-3">Status</th>
                                             <th scope="col" class="px-4 py-3">
                                                 <span class="sr-only">Actions</span>
                                             </th>
@@ -50,9 +51,14 @@
                                             <td class="px-4 py-3">
                                                 <img src="{{ asset('/storage/'. $project -> logo)}}" class="rounded-xl w-[100px]" alt="logo-project">
                                             </td>
-                                            <td class="px-4 py-3">{{ $project -> title}}</td>
-                                            <td class="px-4 py-3">{{ $project -> location}}</td>
-                                            <td class="px-4 py-3">{{ $project -> price}}</td>
+                                            <td class="px-4 py-3">{{ $project -> title }}</td>
+                                            <td class="px-4 py-3">{{ $project -> location }}</td>
+                                            <td class="px-4 py-3">{{ $project -> price }}</td>
+                                            <td class="px-4 py-3">
+                                                <span class="{{ $project->status_project ? 'bg-green-400 border-green-500' : 'bg-yellow-400 border-yellow-500' }} border px-2 py-1 rounded text-white">
+                                                    {{ $project->status_project ? 'Active' : 'Coming Soon' }}
+                                                </span>
+                                            </td>
                                             <td class="px-4 py-3 flex items-center justify-end">
                                                 <button id="dropdown-button-{{ $project->id }}" data-dropdown-toggle="dropdown-{{ $project->id }}" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:hover:text-gray-100" type="button">
                                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

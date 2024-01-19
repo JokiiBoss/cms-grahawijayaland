@@ -16,6 +16,7 @@ class Project extends Model
         'logo',
         'price',
         'qr_code',
-        'location'
+        'location',
+        'status_project'
     ];
 }

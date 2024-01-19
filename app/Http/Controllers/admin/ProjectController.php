@@ -32,14 +32,15 @@ class ProjectController extends Controller
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'price' => 'required',
-                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'qr_code' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'qr_code' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'location' => 'required',
+                'status_project' => 'boolean',
             ]);
 
-            $imagePath = $request->file('image')->store('image_project', 'public');
+            $imagePath = $request->file('image') ? $request->file('image')->store('image_project', 'public') : null;
             $logoPath = $request->file('logo') ? $request->file('logo')->store('logo_project', 'public') : null;
             $qrCodePath = $request->file('qr_code') ? $request->file('qr_code')->store('qr_project', 'public') : null;
 
@@ -51,6 +52,7 @@ class ProjectController extends Controller
                 'logo' => $logoPath,
                 'qr_code' => $qrCodePath,
                 'location' => $request->input('location'),
+                'status_project' => $request->input('status_project', false)
             ]);
 
             return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
@@ -63,15 +65,12 @@ class ProjectController extends Controller
         }
     }
 
-
-
     public function show(string $id)
     {
         $project = Project::findOrFail($id);
 
         return view('admin.projects.show', compact('project'));
     }
-
 
     public function edit(string $id)
     {
@@ -91,6 +90,7 @@ class ProjectController extends Controller
                 'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'qr_code' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'location' => 'required',
+                'status_project' => 'boolean',
             ]);
 
             $project = Project::findOrFail($id);
@@ -125,6 +125,7 @@ class ProjectController extends Controller
                 'description' => $request->input('description'),
                 'price' => $request->input('price'),
                 'location' => $request->input('location'),
+                'status_project' => $request->input('status_project', false)
             ]);
 
             return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!');
@@ -136,15 +137,23 @@ class ProjectController extends Controller
         }
     }
 
-
-
-
     public function destroy($id)
     {
         $project = Project::findOrFail($id);
 
-        Storage::delete('public/image_project/' . $project->image);
-        Storage::delete('public/logo_project/' . $project->logo);
+        if ($project->image) {
+            $imagePath = 'public/image_project/' . $project->image;
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+        }
+
+        if ($project->logo) {
+            $logoPath = 'public/logo_project/' . $project->logo;
+            if (Storage::exists($logoPath)) {
+                Storage::delete($logoPath);
+            }
+        }
 
         $project->delete();
 
