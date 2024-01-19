@@ -55,6 +55,14 @@
                                         <img src="{{ asset('storage/' . $settings->image)}}" alt="Jumbotron Image" class="mt-2 mb-4 w-full rounded-lg">
                                     </div>
                                 @endif
+                                <div class="w-full">
+                                    <label for="status_settings" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                                    <div class="flex items-center">
+                                        <input type="hidden" name="status_settings" value="0">
+                                        <input type="checkbox" name="status_settings" id="status_settings" class="mr-2" {{ $settings->status_settings ? 'checked' : '' }} value="1">
+                                        <span>Show Cooming Soon at Landing Page?</span>
+                                    </div>
+                                </div>                                
                             </div>
                             
                             <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">

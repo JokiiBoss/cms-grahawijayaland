@@ -1,7 +1,7 @@
 <nav class="bg-white py-3 font-montserrat">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{ asset('storage/img/logos.png') }}" alt="logo" class="w-40 md:w-60">
+            <img src="{{ asset('storage/img/logos.png') }}" alt="Logo Graha Wijaya Land" class="w-40 md:w-60">
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -26,11 +26,19 @@
                     </button>
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbar"
-                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                        class="z-10 hidden font-light bg-white divide-y divide-gray-200 rounded-lg shadow w-50">
+                        <ul class="py-2 text-sm text-gray-600" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="/villa-kalasan"
-                                    class="block px-4 py-2 hover:bg-gray-100">Villa Kalasan</a>
+                                    class="block px-4 py-2 hover:bg-gray-100">Villa Natura Kalasan</a>
+                            </li>
+                            <li>
+                                <a href="/villa-kalasan"
+                                    class="block px-4 py-2 hover:bg-gray-100">Villa Argo Mulyo</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100">Bukit Argo Mulyo Residence</a>
                             </li>
                             @if (!request()->is('/'))
                             <li>
@@ -38,14 +46,6 @@
                                     class="block px-4 py-2 hover:bg-gray-100">Proyek Graha Wijaya Land</a>
                             </li>
                             @endif
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100">Natura Kalasan</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100">Bukit Argo Mulyo Residence</a>
-                            </li>
                         </ul>
                     </div>
                 </li>

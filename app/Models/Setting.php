@@ -13,7 +13,8 @@ class Setting extends Model
         'project_id',
         'image',
         'description',
-        'no_whatsapp'
+        'no_whatsapp',
+        'status_settings'
     ];
 
     public function project()

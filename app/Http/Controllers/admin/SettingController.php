@@ -27,6 +27,7 @@ class SettingController extends Controller
             'no_whatsapp' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required',
+            'status_settings' => 'boolean',
         ]);
 
         try {
@@ -34,15 +35,17 @@ class SettingController extends Controller
 
             $setting->no_whatsapp = $request->input('no_whatsapp');
 
-            // Check if the 'description' field exists in the request before updating
             if ($request->has('description')) {
                 $setting->description = $request->input('description');
             }
 
-            // Check if an image file is uploaded before updating
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('jumbotron_images', 'public');
                 $setting->image = $imagePath;
+            }
+
+            if ($request->has('status_settings')) {
+                $setting->status_settings = $request->input('status_settings');
             }
 
             $setting->save();

@@ -19,9 +19,11 @@
         <div class="relative h-[40vh] md:h-screen">
             <img src="{{ asset('storage/' . $settings->image) }}" alt="bg-hero"
                 class="absolute inset-0 object-cover w-full h-full blur-[1px] md:blur-sm">
-            <div class="absolute w-3/4 transform -translate-x-1/2 -translate-y-1/2 md:w-1/2 top-1/2 left-1/2">
-                <img src="{{ asset('storage/img/comingsoon.png') }}" alt="comingsoon" class="w-full">
-            </div>
+            @if ($settings->status_settings == 1)
+                <div class="absolute w-3/4 transform -translate-x-1/2 -translate-y-1/2 md:w-1/2 top-1/2 left-1/2">
+                    <img src="{{ asset('storage/img/comingsoon.png') }}" alt="comingsoon" class="w-full">
+                </div>
+            @endif
             <div>
                 <div
                     class="absolute flex w-full justify-center items-center mt-4 transform -translate-x-1/2 -translate-y-1/2 top-[75%] gap-1 md:top-[85%] left-1/2 md:gap-8">
@@ -87,12 +89,13 @@
             @foreach ($projects as $project)
                 <div class="px-8 w-96">
                     @if ($project->status_project == 0)
-                        <img src="{{ asset('storage/'.$project->logo) }}" alt="proyek-kami" class="flex items-start h-40 mx-auto">
+                        <img src="{{ asset('storage/' . $project->logo) }}" alt="proyek-kami"
+                            class="flex items-start h-40 mx-auto">
                         <p class="text-2xl text-center text-white font-montserrat">COMING SOON</p>
                     @else
-                        <img src="{{ asset('storage/'.$project->logo) }}" alt="proyek-kami" class="h-[12rem] mx-auto">
+                        <img src="{{ asset('storage/' . $project->logo) }}" alt="proyek-kami" class="h-[12rem] mx-auto">
                         <p class="text-lg text-center text-white font-montserrat">{{ $project->description }}</p>
-                        <img src="{{ asset('storage/'.$project->qr_code) }}" alt="barcode" class="h-40 mx-auto mt-12">
+                        <img src="{{ asset('storage/' . $project->qr_code) }}" alt="barcode" class="h-40 mx-auto mt-12">
                     @endif
                 </div>
             @endforeach
