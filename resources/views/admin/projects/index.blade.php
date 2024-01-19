@@ -45,9 +45,10 @@
                                         </tr>
                                     </thead>
                                     <tbody class="">
+                                        @php $rowNumber = 1; @endphp
                                         @foreach ($projects as $project)                                        
                                         <tr class="border-b">
-                                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">1</th>
+                                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ $rowNumber }}</th>
                                             <td class="px-4 py-3">
                                                 <img src="{{ asset('/storage/'. $project -> logo)}}" class="rounded-xl w-[100px]" alt="logo-project">
                                             </td>
@@ -86,6 +87,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @php $rowNumber++; @endphp
                                         @endforeach
                                     </tbody>
                                 </table>
