@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\PromotionController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     ])->names('admin.settings');
 })->name('settings');
 
-
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::resource('users', UserController::class)->parameters([
+        'users' => 'id',
+    ])->names('admin.users');
+})->name('users');
 
 require __DIR__ . '/auth.php';

@@ -42,6 +42,18 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs(
+                        'admin.users.index',
+                        'admin.users.create',
+                        'admin.users.show',
+                        'admin.users.update',
+                        'admin.users.edit',
+                    )">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(
                         'admin.settings.index',
                         'admin.settings.create',
@@ -133,6 +145,16 @@
                 'admin.promotions.edit',
             )">
                 {{ __('Event and Promo') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs(
+                'admin.users.index',
+                'admin.users.create',
+                'admin.users.show',
+                'admin.users.update',
+                'admin.users.edit',
+            )">
+                {{ __('Users') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(
