@@ -52,13 +52,20 @@
                                     @enderror
                                 </div>
                                 <div class="w-full">
+                                    <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">QR Project</label>
+                                    <input type="file" name="qr_code" id="qr_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full" placeholder="Product brand" required="">
+                                    @error('qr_code')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="w-full">
                                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
                                     <input type="text" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Rp. 700.000.000"  value="{{ old('price') }}" required="">
                                     @error('price')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div>
+                                <div class="sm:col-span-2">
                                     <label for="location" class="block mb-2 text-sm font-medium text-gray-900">Location</label>
                                     <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="12" value="{{ old('location') }}" required="">
                                     @error('location')

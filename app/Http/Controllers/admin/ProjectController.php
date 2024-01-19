@@ -41,7 +41,7 @@ class ProjectController extends Controller
 
             $imagePath = $request->file('image')->store('image_project', 'public');
             $logoPath = $request->file('logo') ? $request->file('logo')->store('logo_project', 'public') : null;
-            $qrCodePath = $request->file('qr_code') ? $request->file('qr_code')->store('uploads', 'public') : null;
+            $qrCodePath = $request->file('qr_code') ? $request->file('qr_code')->store('qr_project', 'public') : null;
 
             $project = Project::create([
                 'title' => $request->input('title'),
@@ -111,7 +111,7 @@ class ProjectController extends Controller
             }
 
             if ($request->hasFile('qr_code')) {
-                $qrCodePath = $request->file('qr_code')->store('uploads', 'public');
+                $qrCodePath = $request->file('qr_code')->store('qr_project', 'public');
 
                 if ($project->qr_code) {
                     Storage::delete('public/' . $project->qr_code);

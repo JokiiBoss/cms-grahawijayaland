@@ -35,6 +35,10 @@
                                     <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">Logo</label>
                                     <img class=" mx-auto" src="{{ asset('storage/' . $project->logo )}}" width="300" alt="Logo Project">
                                 </div>
+                                <div class="w-full">
+                                    <label for="logo" class="block mb-2 text-sm font-medium text-gray-900">QR Project</label>
+                                    <img class=" mx-auto" src="{{ asset('storage/' . $project->qr_code )}}" width="300" alt="QR Code Project">
+                                </div>
                             </div>
                             <a href="{{ route('admin.projects.edit', $project->id) }}" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                 Edit project
