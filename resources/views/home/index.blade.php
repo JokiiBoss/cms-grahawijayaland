@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description"
-        content="Developer perumahan modern berkualitas yang berdiri sejak 2020 dengan 3 proyek berjalan. Kami selalu berkomitmen untuk menjaga kualitas dan legalitas produk kami.">
-    <meta name="keywords" content="graha,grahawijaya,grahawijayaland,wijaland,perumahan">
+    <meta name="description" content="Pengembang perumahan modern berkualitas dengan 3 proyek berjalan sejak 2020. Kami berkomitmen menjaga kualitas dan legalitas produk.">
+    <meta name="keywords" content="graha, grahawijaya, grahawijayaland, wijaland, perumahan, villa jogja, villa di jogja, graha wijaya land, wijaya land, rumah jogja, rumah bantul">
     <meta name="author" content="Graha Wijaya Land">
+
+    <!-- Preload CSS and Module Script -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Title -->
     <title>Pengembang Properti - Graha Wijaya Land</title>
 </head>
 

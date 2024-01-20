@@ -35,14 +35,19 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'User berhasil ditambahkan');
+        return redirect()->route('admin.users.index')->with('success', 'User added successfully!');
     }
 
     public function show()
     {
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Users deleted successfully!');
     }
 }
